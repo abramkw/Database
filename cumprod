@@ -1,0 +1,28 @@
+利用对数的特性，把数据转换为对数，汇总相加再换底
+
+适用数据库：mysql,oracle
+
+实现函数方法及调用：select exp(sum(ln(字段))) from table group by xxxx
+
+测试表
+表dep
+depno  date         growth_rate
+1      2018-01-01   1
+1      2018-01-02   2
+1      2018-01-03   3
+2      2018-01-01   2
+2      2018-01-02   2
+3      2018-01-01   3
+
+MySQL语法
+SELECT DEPNO,EXP(SUM(LN(GROWTH_RATE))) FROM DEP GROUP BY DEPNO
+
+ORACLE语法
+SELECT DEPNO,EXP(SUM(LN(GROWTH_RATE))) FROM DEP GROUP BY DEPNO
+
+结果集
+表dep
+depno  date         growth_rate
+1      2018-01-01   6
+2      2018-01-01   4
+3      2018-01-01   3
